@@ -36,3 +36,9 @@
 .vs
 Debug
 Release
+
+# Premake5
+bin/*
+build/
+premake5
+premake5.exe
