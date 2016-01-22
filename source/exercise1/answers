@@ -1,0 +1,30 @@
+1.  Kompilator jest programem który tłumaczy kod napisany w jednym języku programowania na drugi 
+    - najczęściej do formy pliku binarnego nazywanym plikiem obiektowym (ang. object file).
+    Po wykonaniu ciężkiej pracy przez kompilator do akcji wkracza program nazywany linkerem 
+    (o pięknej polskiej nazwie - konsolidator) który to jest odpowiedzialny za połączenie w całość
+    wygenerowanych przez kompilator plików obiektowych i/lub bibliotek do formy pliku wykonywalnego
+    czy też biblioteki statycznej lub dynamicznej.
+2.  "Include guard" jest mechanizmem zabezpieczającym przed wielokrotnym dołączaniem kodu do programu, 
+    uchraniając nas przed błędami wynikającymi np. z wielokrotnego definiowania istniejącego już kodu.
+3.  To pytanie jest sprzężone z pytaniem powyższym, mianowicie dyrektywa "#pragma once"
+    w sporym uproszczeniu, jest tym samym co "include guard", ale z pewnymi zaletami i wadami. 
+    Osobiście bardziej preferuję "include guard" - głównie z przyzwyczajenia i tego, 
+    że nie jest to mechanizm należący do standardu.
+4. "auto" jest słowem kluczowym które automatycznie wnioskuje typ deklarowanej zmiennej
+    na podstawie wartości jaką ta zmienna jest inicjalizowana.
+5.  Programowanie obiektowe jest wzorcem programowania w którym staramy się odwzorować rzeczywistość
+    za pomocą obiektów reprezentujących pewne stany i zachowania.
+6.  Modyfikatory dostępu jak sama nazwa wskazuje, są odpowiedzialne za określenie kto/co
+    w jaki sposób może (lub nie może) korzystać z określonych pól i metod.
+7.  Różnica pomiędzy metodą "virtual", a "pure virtual" jest taka, że metoda czysto wirtualna
+    musi obligatoryjnie zostać zaimplementowana przez klasę dziedziczącą która nie jest abstrakcyjna, 
+    a metoda wirtulna tego narzutu nie ma.
+8.  "vtable" jest częścią mechanizmu polimorfizmu w C++, gdzie jest to zwyczajnie tablica przechowująca
+    wskaźniki na funkcje wirtualne danej klasy. Każdy obiekt zawierający metodę wirtualną, 
+    posiada wskaźnik na "vtable" nazywanym "vptr" przez co można osiągnąć polimorfizm w C++. 
+    Ponadto pytanie o "vtable/vptr" jest moim ulubionym pytaniem z rozmów kwalifikacyjnych, ponieważ 
+    sprawdza ono czy programista wie dlaczego i w jaki sposób działa mechanizm X pod tak zwaną maską ;)
+9.  Destruktora powinno się używać adekwatnego do napisanego kodu, ale różnica jest taka, 
+    że dzięki polimorfizmowi możemy usunąć obiekt pochodny za pomocą wskaźnika obiektu bazowego, 
+    powodując w ten sposób wyciek pamięci jeśli nie zadbamy o to aby 
+    destruktor pochodnej klasy abstrakcyjnej był wirtualny.
