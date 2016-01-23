@@ -1,0 +1,31 @@
+1.  Stos i sterta są obszarami pamięci RAM dostępnymi dla programisty z pewnymi różnicami.
+    Stos ma narzucony mały rozmiar rzędu megabajtów, gdzie rozmiar sterty ograniczony
+    jest do dostępnej pamięci RAM (też nie do końca ze względu na istnienie
+    stronicowania pamięci ["swap"/"pagefile"]) lub architektury programu
+    (x86 zezwala jedynie na alokację 2GB ciągłej pamięci). 
+    Zaalokowana pamięć na stosie jest zwalniana automatycznie przy wyjściu zmiennej poza zasięg ("scope"),
+    gdzie pamięć zaalokowana na stercie tego udogodnienia nie posiada i wiąże się to z wyciekami pamięci,
+    możliwymi naruszeniami pamięci np. w przypadku kilkukrotnej dealokacji niezerowego wskaźnika itd.,
+    jeśli programista nie zwolni tej pamięci poprawnie.
+2.  Wskaźnik jest zmienną która przechowuje pewien adres pamięci jako wartość.
+3.  Wskaźnik na wskaźnik może być iteratorem po tablicy wskaźników które wskazują na nietrywialne obiekty.
+4.  Arytmetyka wskaźników polega na zastosowaniu operatorów arytmetycznych do nawigacji po pamięci,
+    np. zapis "(uint8_t*)mem+7" wskazuje na kolejny 7 bajt względem adresu przechowywanego przez wskaźnik mem.
+5.  Konwersję łatwiej omówić względem rzutowania typów, ponieważ na podstawie punktu 6. wiemy, że 
+    rzutowanie polega tylko na zmianie interpretacji typu, gdzie konwersja jest rzeczywistym odwzorowaniem
+    wartości jednego typu na inny typ. Np. konwersja może nastąpić w wypadku kiedy funkcja oczekuje 
+    jako argument zmienną typu float, a w wywołaniu programista podał wartość typu int (np. 3)
+    i w związku z tym, że istnieje konwersja pomiędzy tymi typami, 
+    funkcja otrzymała jako argument wartość typu float (np. 3.f).
+6.  Rzutowanie typów polega na zmianie interpretacji typu zmiennej na inną niż została zadeklarowana,
+    np. w przykładzie 4. wykorzystałem rzutowanie zmiennej mem na wskaźnik typu uint8_t, aby otrzymać
+    adres na który wskazuje mem przesunięty o dokładnie 7 bajtów, gdzie dajmy na to mem jest wskaźnikiem
+    na typ uint32_t i przesunięcie bez wyżej wspomnianego rzutowania skutkowałoby otrzymaniem adresu
+    przesuniętego o "7 * sizeof(uint32_t)" bajtów, czyli o 7 elementów typu uint32_t.
+7.  static_cast, dynamic_cast, reinterpret_cast, const_cast
+8.  Różnica pomiędzy "while" i "do while", jest taka, że w przypadku tej drugiej ciało pętli wykona się
+    przynajmniej raz - to znaczy, że warunek pętli jest sprawdzany po wykonaniu ciała w przypadku "do while".
+9.  Statyczna alokacja następuje automatycznie na początku wykonania ciała (wyjątek alloca!) 
+    o z góry określonym rozmiarze, a zwolnienie tej pamięci też następuje automatycznie
+    przy "wyjściu" jej poza zasięg ("scope"). Dynamiczne alokacje i dealokacje są wykonywane przez programistę 
+    przez co czas życia i rozmiar dynamicznie zaalokowanej pamięci jest determiniowany przez programistę.
