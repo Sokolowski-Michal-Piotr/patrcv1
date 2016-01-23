@@ -33,8 +33,16 @@ workspace "patrcv1"
         location "build/exercise2"
 
         files {
-            "source/exercise2/**"
+            "source/exercise2/**",
+            "source/exercise1/**"
         }
+
+        excludes {
+            "source/exercise1/answers",
+            "source/exercise1/main.cpp"
+        }
+
+        includedirs { "source/exercise1" }
 
     project "exercise3"
         kind "ConsoleApp"
