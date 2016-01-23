@@ -4,6 +4,10 @@ workspace "patrcv1"
     location "build"
     targetdir "bin"
 
+    configuration { "gmake" }
+    buildoptions { "-std=c++0x" }
+    configuration { "*" }
+
     filter "configurations:Debug"
         defines "DEBUG"
         flags { "Symbols" }
