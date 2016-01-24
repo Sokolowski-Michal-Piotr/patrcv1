@@ -3,7 +3,7 @@ workspace "patrcv1"
     platforms { "x86", "x64" }
     startproject "exercise1"
     location "build"
-    targetdir "bin"
+    targetdir "bin/%{cfg.buildcfg}/%{cfg.platform}"
 
     configuration { "gmake" }
     buildoptions { "-std=c++0x" }
