@@ -8,6 +8,8 @@
 
 int main(int argc, char *argv[])
 {
+    do std::cout << "Hello world!" << "\n"; while (false);
+
     shape_container shapes;
 
     shapes.add(new square(3));
