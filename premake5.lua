@@ -1,5 +1,6 @@
 workspace "patrcv1"
     configurations { "Debug", "Release" }
+    platforms { "x86", "x64" }
     startproject "exercise1"
     location "build"
     targetdir "bin"
