@@ -54,3 +54,18 @@ workspace "patrcv1"
         files {
             "source/exercise3/**"
         }
+
+        OPENCV_DIR = os.getenv("OPENCV_DIR")
+
+        libdirs {
+            (OPENCV_DIR .. "/%{cfg.platform}/" .. _ACTION .. "/lib")
+        }
+
+        includedirs {
+            (OPENCV_DIR .. "/include")
+        }
+
+        configuration "Debug"
+            links { "opencv_world310d" }
+        configuration "Release"
+            links { "opencv_world310" }
