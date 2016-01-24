@@ -1,0 +1,27 @@
+1.  Przestrzeń barw RGB jest reprezentacją kolorów w ujęciu matematycznym, 
+    opisywanymi współrzędnymi kartezjańskimi, gdzie kolejne współrzędne układu kartezjańskiego
+    oznaczają składowe poszczególnych kolorów:
+    - czerwonego,
+    - zielonego,
+    - niebieskiego.
+    Taka reprezentacja jest nawiązaniem do tego w jaki sposób działają monitory komputerowe
+    (piksel składa się z subpikseli o kolorach wymienionych powyżej).
+2.  Przestrzeń barw HSV to przestrzeń barw których składowymi są:
+    - częstotliwość światła (białego), 
+    - nasycenie koloru,
+    - jasność światła.
+    Taka reprezentacja jest nawiązaniem do tego w jaki sposób człowiek postrzega barwy w rzeczywistości
+    (dzięki informacji pochodzącej z fali świetlnej docierającej do oka).
+3.  Filtr 2D jest macierzą o rozmiarze i wartościach zależnych od wybranej 
+    techniki filtrowania i/lub preferencji własnych. Na każdy piksel grafiki wykonuje się operację przeplotu,
+    czyli najzwyczaniej oblicza się sumę iloczynów piksela z elementami macierzy otrzymując określony wynik.
+4.  Uogólniając to pytanie do tego zadania, to idea stojąca za reprezentacją obrazu w pamięci jest taka, aby
+    w sposób liniowy zapisać wartości kolorów kolejnych pikseli jako kolejne bajty, np. n-ty bajt od początku
+    pamięci w której trzymana jest dana reprezentacja obrazu w skali szarości, będzie zawierał informację
+    na temat jasności (koloru) n-tego piksela z kolei. Można to sobie bardzo fajnie zobrazować uruchamiając
+    narzędzie podglądu pamięci z debugera visual studio i konfigurując widok tak, że będzie on wskazywał
+    na adres początku danych reprezentujących obraz (składowa data klasy Mat w OpenCV),
+    ilość kolumn podglądu ustawić na zgodną z szerokością obrazu i typ wyświetlanych wartści ustawić na
+    jednobajtową wartość całkowitą - taka konfiguracja obrazuje rozkład pamięci w stylu zwykłej grafiki,
+    tylko zamiast kolorów mamy podane wartości kolorów, ale należy pamiętać, 
+    że jest to nadal obszar pamięci liniowej ciągłej, pomimo zastosowanego tricku wizualnego.
