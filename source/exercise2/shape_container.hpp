@@ -1,6 +1,8 @@
 #ifndef SHAPE_CONTAINER_HPP
 #define SHAPE_CONTAINER_HPP
 
+#include <cstdlib>
+
 class shape;
 
 class shape_container
