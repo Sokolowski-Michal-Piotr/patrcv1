@@ -52,15 +52,35 @@ workspace "patrcv1"
         }
 
         OPENCV_DIR = os.getenv("OPENCV_DIR")
-        libdirs {
-            (OPENCV_DIR .. "/%{cfg.platform}/" .. _ACTION .. "/lib")
-        }
-
         includedirs {
             (OPENCV_DIR .. "/include")
         }
 
-        configuration "Debug"
-            links { "opencv_world310d" }
-        configuration "Release"
-            links { "opencv_world310" }
+        filter "action:vs2015"
+            libdirs {
+                (OPENCV_DIR .. "/%{cfg.platform}/vc14/lib")
+            }
+        filter "action:gmake"
+            libdirs {
+                (OPENCV_DIR .. "/lib")
+
+        filter { "action:vs*", "configurations:Debug" }
+            links {
+                "opencv_world310d"
+            }
+        filter { "action:vs*", "configurations:Release" }
+            links {
+                "opencv_world310"
+            }
+        filter { "action:gmake", "configurations:Debug" }
+            links {
+                "opencv_cored",
+                "opencv_imgprocd",
+                "opencv_imgcodecsd"
+            }
+        filter { "action:gmake", "configurations:Release" }
+            links {
+                "opencv_core",
+                "opencv_imgproc",
+                "opencv_imgcodecs"
+            }
