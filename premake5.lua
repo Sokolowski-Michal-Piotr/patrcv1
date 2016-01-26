@@ -5,9 +5,8 @@ workspace "patrcv1"
     location "build"
     targetdir "bin/%{cfg.buildcfg}/%{cfg.platform}"
 
-    configuration { "gmake" }
-    buildoptions { "-std=c++0x" }
-    configuration { "*" }
+    filter "action:gmake"
+        buildoptions { "-std=c++0x" }
 
     filter "configurations:Debug"
         defines "DEBUG"
